@@ -1,0 +1,38 @@
+.table-wrapper { 
+    border-radius: 12px; 
+    overflow: hidden; 
+    background: white; 
+}
+    
+.mat-table 
+{ 
+    width: 100%; 
+}
+
+.custom-paginator 
+{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 8px 16px;
+  gap: 16px;
+  border-top: 1px solid #efefef;
+  background: #fafafa;
+  .mat-mdc-icon-button {
+    color: #1976d2;
+
+    &:disabled {        
+        .mat-icon {
+          color: #5c7fa1 !important; 
+          opacity: 0.5;           
+          cursor: not-allowed;    
+      }
+    }
+  }   
+}
+
+.page-info 
+{ 
+    font-size: 14px; 
+    color: #666; 
+}

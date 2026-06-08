@@ -1,0 +1,26 @@
+<div class="container">
+
+  <div class="card">
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-grid">
+        <app-text-input label="Role Name" controlName="roleName" [maxLength]="50"></app-text-input>
+
+        <app-select-input 
+          label="Status" 
+          controlName="status" 
+          [data]="statusOptions"
+          valueField="value" 
+          labelField="label"> 
+        </app-select-input>
+      </div>
+
+      <app-action-button
+        saveLabel="Save Role"
+        [disabled]="addForm.invalid"
+        [isLoading]="isLoading()"
+        (onCancel)="goBack()">
+      </app-action-button>
+    </form>
+  </div>
+</div>

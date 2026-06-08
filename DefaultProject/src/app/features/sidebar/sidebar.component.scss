@@ -1,0 +1,102 @@
+::ng-deep .mat-drawer-inner-container {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+
+  .mdc-list-item--with-leading-icon .mdc-list-item__start {
+    margin-inline-start: 0;
+  }
+}
+
+.layout-container {
+  height: 100vh;
+  --mdc-list-list-item-label-text-color: white !important;
+  --mat-app-on-surface: white !important;
+  --mat-sidenav-container-text-color: white !important;
+  --mdc-outlined-button-label-text-color: #ffffff !important;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 250px;
+  height: 100%;
+  background: linear-gradient(135deg, #0080ff, #f7900a);
+  display: flex !important;
+  flex-direction: column;
+  padding: 10px;
+}
+
+/* LOGO */
+.menu-title {
+  padding: 16px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* MENU */
+mat-nav-list {
+  flex: 1 0 auto;
+  overflow-y: auto;
+  display: block;
+}
+
+/* menu item */
+a[mat-list-item],
+.menu-parent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: 8px;
+  margin-bottom: 6px;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+
+  .menu-content {
+    display: flex;
+    align-items: center;
+    gap: 12px; 
+  }
+
+  &:hover {
+    background-color: #f7900a; /* Atau warna hover pilihan Anda */
+    color: black !important;
+
+    /* Paksa semua elemen teks dan ikon di dalam menu-content jadi hitam */
+    .menu-content span, 
+    .menu-content mat-icon,
+    .arrow {
+      color: black !important;
+    }
+  }
+}
+
+
+/* hover */
+a[mat-list-item]:hover,
+.menu-parent:hover {
+  background: #f7900a;
+}
+
+
+/* active */
+.active-link {
+  background: #f7900a !important;
+}
+
+/* submenu */
+.submenu {
+  padding-left: 16px;
+}
+
+.submenu-item {
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+/* arrow icon */
+.arrow {
+  font-size: 18px;
+}

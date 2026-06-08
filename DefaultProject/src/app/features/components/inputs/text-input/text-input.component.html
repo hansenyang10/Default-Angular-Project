@@ -1,0 +1,42 @@
+<mat-form-field appearance="outline" subscriptSizing="dynamic" style="width: 100%;">
+  <mat-label>{{ label() }}</mat-label>
+  
+  <input 
+    matInput 
+    [formControlName]="controlName()" 
+    [type]="!hide() && type() === 'password' ? 'text' : type()" 
+    [placeholder]="placeholder()"
+    (input)="0" 
+    (blur)="0" 
+    [minlength]="minLength()"
+    [maxlength]="maxLength()"
+    (keypress)="onlyNumber($event)"
+    [disabled]="disabled()"
+    (keypress)="onKeyPress($event)"
+    (keyup)="onKeyUp($event)">
+
+    @if(type() === 'password'){
+        <div matSuffix> 
+            <button 
+                mat-icon-button 
+                type="button"
+                (click)="hide.set(!hide())"
+                tabindex="-1">
+                <mat-icon>
+                {{ hide() ? 'visibility_off' : 'visibility' }}
+                </mat-icon>
+            </button>
+        </div>
+    }
+  <mat-error>
+    {{ errorMessage }}
+  </mat-error>
+
+  
+  @if (isCapsLockOn() && type() === 'password' && !errorMessage) {
+    <mat-hint style="color: #e67e22; display: flex; align-items: center; gap: 4px; padding-top: 5px;">
+      <mat-icon style="font-size: 14px; width: 14px; height: 14px;">warning</mat-icon>
+      <span>Caps Lock is ON</span>
+    </mat-hint>
+  }
+</mat-form-field>

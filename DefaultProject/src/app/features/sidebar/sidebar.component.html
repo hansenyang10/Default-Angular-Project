@@ -1,0 +1,49 @@
+<mat-sidenav-container class="layout-container">
+  <mat-sidenav mode="side" opened class="sidebar">
+    <div class="menu-title">
+      <h2 routerLink="/">DEFAULT PROJECT</h2>
+    </div>
+    <mat-nav-list>
+      @for (menu of menus(); track menu.label) {
+        @if (!menu.children) {
+          <a mat-list-item
+             [routerLink]="menu.route"
+             routerLinkActive="active-link"
+             [routerLinkActiveOptions]="{ exact: true }">
+            <mat-icon matListItemIcon>{{ menu.icon }}</mat-icon>
+            <span>{{ menu.label }}</span>
+          </a>
+        }
+
+        @if (menu.children) {
+          <div 
+            mat-list-item
+            class="menu-parent"
+            (click)="toggleMenu(menu.label)"
+            [class.open]="openMenu() === menu.label">
+            <div class="menu-content">
+              <mat-icon matListItemIcon>{{ menu.icon }}</mat-icon>
+              <span matListItemTitle>{{ menu.label }}</span>
+            </div>
+            <mat-icon class="arrow">
+              {{ openMenu() === menu.label ? 'expand_less' : 'expand_more' }}
+            </mat-icon>
+          </div>
+
+          @if (openMenu() === menu.label) {
+            <div class="submenu">
+              @for (child of menu.children; track child.label) {
+                <a mat-list-item
+                   class="submenu-item"
+                   [routerLink]="child.route"
+                   routerLinkActive="active-link">
+                  {{ child.label }}
+                </a>
+              }
+            </div>
+          }
+        }
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+</mat-sidenav-container>

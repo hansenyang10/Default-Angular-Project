@@ -1,0 +1,39 @@
+<div class="file-input-wrapper">
+  <label class="mat-label">{{ label() }}</label>
+  
+  <div class="upload-area" [class.has-image]="imagePreview()">
+    <div class="preview-container" (click)="fileInput.click()">
+        @if (imagePreview()) {
+            <img [src]="imagePreview()" alt="New Preview">
+        } 
+        @else if (fullInitialPreview()) {
+            <img [src]="fullInitialPreview()" alt="Existing Photo" (error)="onImageError($event)">
+        } 
+        @else {
+            <div class="placeholder">
+            <mat-icon>add_a_photo</mat-icon>
+            <span>Click to upload</span>
+            </div>
+        }
+    </div>
+
+    <div class="actions">
+      <input 
+        #fileInput
+        type="file" 
+        [accept]="accept()" 
+        (change)="onFileSelected($event)" 
+        style="display: none">
+
+      @if (imagePreview() || fullInitialPreview()) {
+        <button mat-icon-button color="warn" type="button" (click)="removeFile(fileInput)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      }
+    </div>
+  </div>
+
+  @if (control.invalid && control.touched) {
+    <small class="error-text">File is required or invalid</small>
+  }
+</div>

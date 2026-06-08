@@ -1,0 +1,25 @@
+.filter-field {
+  width: 150px;
+  --mdc-outlined-text-field-container-shape: 8px;
+  ::ng-deep .mat-mdc-select-arrow-wrapper {
+    display: none;
+  }
+}
+
+.suffix-container {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+  pointer-events: none; // Agar klik pada ikon tetap membuka dropdown
+}
+
+.caret-icon {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.input-spinner {
+  margin-right: 4px;
+}

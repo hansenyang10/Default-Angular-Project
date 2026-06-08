@@ -1,0 +1,62 @@
+.container {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+app-search-input {
+  flex: 1;           
+  max-width: 50%;   
+}
+
+button {
+  flex-shrink: 0;   
+}
+
+.mat-mdc-icon-button {
+  color: #000000 !important;
+  
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+}
+
+.table-wrapper {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #eee;
+}
+
+.state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  color: #777;
+}
+
+::ng-deep {
+  .role-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-right: 6px;
+    font-weight: 500;
+    color: #fff;
+  }
+
+  .active {
+    color: #13a41f;
+  }
+
+  .inactive {
+    color: #ff0000;
+  }
+}

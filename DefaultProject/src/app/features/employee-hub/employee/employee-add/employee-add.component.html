@@ -1,0 +1,48 @@
+<div class="container">
+
+  <div class="card">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="profile-section">
+        <app-file-input 
+          label="Profile Picture" 
+          controlName="profileImage">
+        </app-file-input>
+      </div>
+      <div class="form-grid">
+        <app-text-input label="First Name" controlName="firstName" [maxLength]="50"></app-text-input>
+        <app-text-input label="Middle Name" controlName="middleName" [maxLength]="50"></app-text-input>
+        <app-text-input label="Last Name" controlName="lastName" [maxLength]="50"></app-text-input>
+        <app-text-input label="Email" controlName="email" type="email" [maxLength]="255"></app-text-input>
+        <app-text-input label="Username" controlName="userName" [maxLength]="50"></app-text-input>
+        <app-text-input label="Phone Number" controlName="phoneNumber" type="tel" [maxLength]="13"></app-text-input>
+
+        <app-select-input 
+          label="Gender" 
+          controlName="gender" 
+          [data]="genderOptions"
+          valueField="value" 
+          labelField="label"> 
+          </app-select-input>
+
+        <app-select-input 
+          label="Roles" 
+          controlName="roles" 
+          [data]="roles()" 
+          valueField="roleName" 
+          labelField="roleName" 
+          [multiple]="true"
+          [isLoading]="loadingRoles()">
+        </app-select-input>
+
+        <app-text-input label="Password" controlName="password" [type]="'password'" [minLength]="8"></app-text-input>
+      </div>
+
+      <app-action-button
+        saveLabel="Save Employee"
+        [disabled]="registerForm.invalid"
+        [isLoading]="isLoading()"
+        (onCancel)="goBack()">
+      </app-action-button>
+    </form>
+  </div>
+</div>

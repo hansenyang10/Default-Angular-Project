@@ -1,0 +1,35 @@
+<div class="login-page">
+
+  <div class="login-card mat-elevation-z4">
+
+    <div class="login-header">
+      <h1>Welcome Back 👋</h1>
+      <p>Please login to your account</p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-grid">
+        <app-text-input label="Email" controlName="email" type="email" [maxLength]="255"></app-text-input>  
+        <app-text-input label="Password" controlName="password" [type]="'password'" [minLength]="8"></app-text-input>
+      </div>
+
+      <div class="forgot-password">
+        <a href="#">Forgot password?</a>
+      </div>
+
+      <button 
+        mat-raised-button 
+        color="primary" 
+        type="submit"
+        [disabled]="!loginForm.valid || loading()"
+        class="login-button">
+
+        @if (loading()) {
+          <mat-spinner></mat-spinner>
+        } @else {
+          Log In
+        }
+      </button>
+    </form>
+  </div>
+</div>

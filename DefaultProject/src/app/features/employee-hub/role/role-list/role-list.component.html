@@ -1,0 +1,48 @@
+<div class="container">
+
+  <div class="header">
+    <app-search-input (searchChange)="handleSearch($event)"></app-search-input>
+    <button mat-raised-button color="primary" (click)="addRole()">
+      + Add Role
+    </button>
+  </div>
+
+  @if (loadingRoles()) {
+    <div class="state">
+      <mat-progress-spinner mode="indeterminate" diameter="40"></mat-progress-spinner>
+    </div>
+  } @else if (apiResponse().data.length === 0) {
+    <div class="state">
+      No data found
+    </div>
+  } @else {
+    <app-table 
+      [data]="apiResponse()?.data || []" 
+      [hasNext]="apiResponse()?.next || false"
+      [pageNumber]="apiResponse()?.pageNumber || 1"
+      [columns]="tableColumns"
+      [columnTemplates]="{        
+        actions: actionTmpl,
+        status: statusTmpl
+      }"
+      (pageChange)="handlePageChange($event)">
+    </app-table>
+  }
+</div>
+
+<ng-template #statusTmpl let-role>
+  <div class="status-container">
+    <span class="status-badge" [ngClass]="role.status.toLowerCase()">
+      {{ role.status }}
+    </span>
+  </div>
+</ng-template>
+
+<ng-template #actionTmpl let-role>
+  <button mat-icon-button (click)="editRole(role.id)">
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button mat-icon-button (click)="deleteRole(role.id, role.versionNumber)">
+    <mat-icon>delete</mat-icon>
+  </button>
+</ng-template>

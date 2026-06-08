@@ -1,0 +1,15 @@
+<mat-toolbar class="top-nav">
+  @if (!isHome()) {
+    <button mat-icon-button (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  } @else {
+    <div style="width: 40px;"></div> 
+  }
+
+  <span class="page-title">{{ titleStrategy.currentPageTitle() }}</span>
+  <span class="spacer"></span>
+  <button mat-icon-button (click)="logout()">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>

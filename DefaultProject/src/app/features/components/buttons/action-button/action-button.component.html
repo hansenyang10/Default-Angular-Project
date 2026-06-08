@@ -1,0 +1,25 @@
+<div class="actions">
+      <button 
+        class="cancel-button" 
+        mat-button 
+        type="button" 
+        (click)="onCancel.emit()"
+        [disabled]="isLoading()">
+        {{ cancelLabel() }}
+      </button>
+
+      <button 
+        mat-raised-button 
+        color="primary" 
+        type="submit"
+        [disabled]="disabled() || isLoading()">
+        @if (isLoading()) {
+          <div class="button-content">
+            <mat-spinner diameter="20"></mat-spinner>
+            <span>Saving...</span>
+          </div>
+        } @else {
+          {{ saveLabel() }}
+        }
+      </button>
+    </div>

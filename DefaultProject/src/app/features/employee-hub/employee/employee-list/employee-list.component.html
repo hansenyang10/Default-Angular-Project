@@ -1,0 +1,75 @@
+<div class="container">
+
+  <div class="filter-group">
+    <app-search-input (searchChange)="handleSearch($event)"></app-search-input>
+    <app-filter-dropdown 
+      defaultValue=""
+      label="Gender" 
+      [data]="genderOptions" 
+      [isLoading]="false"
+      (filterChange)="handleGenderFilter($event)">
+    </app-filter-dropdown>
+    <app-filter-dropdown 
+      class="role-filter"
+      label="Roles" 
+      [data]="roles()" 
+      [multiple]="true" 
+      valueField="roleName" 
+      labelField="roleName"
+      [isLoading]="loadingRoles()"
+      defaultValue=""
+      (filterChange)="handleRoleFilter($event)">
+    </app-filter-dropdown>
+    <button mat-raised-button color="primary" (click)="addEmployee()">
+      + Add Employee
+    </button>
+  </div>
+
+  @if (loadingEmployees()) {
+    <div class="state">
+      <mat-progress-spinner mode="indeterminate" diameter="40"></mat-progress-spinner>
+    </div>
+  } @else if (employeeList().length === 0) {
+    <div class="state">
+      No data found
+    </div>
+  } @else {
+    <app-table 
+      [data]="apiResponse()?.data || []" 
+      [hasNext]="apiResponse()?.next || false"
+      [pageNumber]="apiResponse()?.pageNumber || 1"
+      [columns]="tableColumns"
+      [columnTemplates]="{
+        roles: roleTmpl,
+        gender: genderTmpl,
+        actions: actionTmpl
+      }"
+      (pageChange)="handlePageChange($event)">
+    </app-table>
+  }
+</div>
+
+<ng-template #roleTmpl let-emp>
+  <div class="role-container">
+    @for (role of emp.roles; track role) {
+      <span class="role-badge" [ngClass]="'role-' + role.toLowerCase()">
+        {{ role }}
+      </span>
+    }
+  </div>
+</ng-template>
+
+<ng-template #genderTmpl let-emp>
+  <span 
+    class="gender-label"
+    [class.male]="emp.gender === 'Male'"
+    [class.female]="emp.gender === 'Female'">
+    {{ emp.gender }}
+  </span>
+</ng-template>
+
+<ng-template #actionTmpl let-emp>
+  <button mat-icon-button (click)="editEmployee(emp.id)">
+    <mat-icon>edit</mat-icon>
+  </button>
+</ng-template>

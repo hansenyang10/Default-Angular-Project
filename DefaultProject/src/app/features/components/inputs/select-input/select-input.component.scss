@@ -1,0 +1,42 @@
+.spinner-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 14px;
+}
+
+/* Memperbaiki warna spinner agar mengikuti tema */
+mat-spinner {
+  --mdc-circular-progress-active-indicator-color: var(--mat-sys-primary, #3f51b5);
+}
+
+/* Sembunyikan panah default saat loading atau jika menggunakan icon custom */
+::ng-deep {
+  .is-loading .mat-mdc-select-arrow-wrapper {
+    display: none !important;
+  }
+  
+  /* Jika Anda ingin SELALU menggunakan mat-icon custom, buang kondisi .is-loading */
+  .mat-mdc-select-arrow-wrapper {
+    display: none !important;
+  }
+}
+
+.suffix-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 4px;
+  color: rgba(0, 0, 0, 0.54);
+  
+  /* Supaya klik pada icon tetap menembus ke select di bawahnya */
+  pointer-events: none; 
+}
+
+.caret-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

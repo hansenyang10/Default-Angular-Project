@@ -1,0 +1,55 @@
+<div class="container">
+  <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+    <mat-tab-group animationDuration="500ms" class="employee-tabs">
+      <mat-tab label="General Information">
+        <div class="tab-content">
+          <div class="profile-section">
+            <app-file-input 
+              label="Profile Picture" 
+              controlName="profileImage"
+              [initialPreview]="employee().profilePictureUrl!">
+            </app-file-input>
+          </div>
+          <div class="form-grid">
+            <app-text-input label="First Name" controlName="firstName" [maxLength]="50"></app-text-input>
+            <app-text-input label="Middle Name" controlName="middleName" [maxLength]="50"></app-text-input>
+            <app-text-input label="Last Name" controlName="lastName" [maxLength]="50"></app-text-input>
+            <app-text-input label="Email" controlName="email" type="email" [maxLength]="255"></app-text-input>
+            <app-text-input label="Username" controlName="userName" [maxLength]="50"></app-text-input>
+            <app-text-input label="Phone Number" controlName="phoneNumber" type="tel" [maxLength]="13"></app-text-input>
+            
+            <app-select-input 
+              label="Gender" 
+              controlName="gender" 
+              [data]="genderOptions"
+              valueField="value" 
+              labelField="label"> 
+            </app-select-input>
+
+            <app-select-input 
+              label="Roles" 
+              controlName="roles" 
+              [data]="roles()" 
+              valueField="roleName" 
+              labelField="roleName" 
+              [multiple]="true">
+            </app-select-input>
+          </div>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Security">
+        <div class="tab-content">
+          <app-change-password></app-change-password>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+
+    <app-action-button
+      saveLabel="Update Employee"
+      [disabled]="updateForm.invalid"
+      [isLoading]="isLoading()"
+      (onCancel)="goBack()">
+    </app-action-button>
+  </form>
+</div>

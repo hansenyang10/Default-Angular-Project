@@ -1,0 +1,31 @@
+<mat-form-field appearance="outline" subscriptSizing="dynamic" class="filter-field">
+      <mat-label>{{ label() }}</mat-label>
+      
+      <mat-select 
+        #select
+        [value]="defaultValue()"
+        (selectionChange)="onSelectionChange($event.value)" 
+        [multiple]="multiple()" 
+        [disabled]="isLoading()">
+        
+        @if (!multiple()) {
+          <mat-option [value]="defaultValue()">All {{ label() }}</mat-option>
+        }
+
+        @for (item of data(); track item[valueField()]) {
+          <mat-option [value]="item[valueField()]">
+            {{ item[labelField()] }}
+          </mat-option>
+        }
+      </mat-select>
+
+      <div matSuffix class="suffix-container">
+        @if (isLoading()) {
+          <mat-spinner diameter="20" class="input-spinner"></mat-spinner>
+        } @else {
+          <mat-icon class="caret-icon">
+            {{ select.panelOpen ? 'expand_less' : 'expand_more' }}
+          </mat-icon> 
+        }
+      </div>
+    </mat-form-field>

@@ -1,0 +1,5 @@
+{
+  "apiBaseUrl": "https://localhost:44392",
+  "authBaseUrl": "https://localhost:44392",
+  "vapidKey": "BOlukEKbtvycvAeJfTsaOS7182XCsQ8Jd-X0ksqH7TEnnXfMNucnnkRsiGw2QNWqHPgxLEz552fTvHOu9yEh6Dg"
+}

@@ -1,0 +1,197 @@
+body {
+  margin: 0
+}
+
+:root {
+  --mat-select-panel-background-color: #ffffff;
+  --mat-app-surface-container: #ffffff;
+  --mdc-protected-button-label-text-color: #ffffff;
+  --mdc-list-list-item-leading-icon-color: #ffffff;
+  --mdc-protected-button-disabled-container-color: #e1e1e1;
+  --mdc-outlined-text-field-disabled-outline-color: #c7c3c3;
+  --mdc-outlined-text-field-hover-label-text-color: #969595;
+  --mat-tab-header-inactive-label-text-color: #969595;
+  --mdc-outlined-text-field-disabled-label-text-color: #969595;
+  --mdc-outlined-text-field-focus-outline-color: #676767; 
+  --mdc-outlined-text-field-focus-label-text-color: #676767;
+  --mdc-outlined-text-field-label-text-color: #676767;
+  --mat-tab-header-active-focus-label-text-color: #676767;
+  --mat-tab-header-active-label-text-color: #676767;
+  --mat-form-field-leading-icon-color: #676767;
+  --mdc-protected-button-disabled-label-text-color: #454545;
+  --mat-option-label-text-color: #1a1a1a;
+  --mdc-list-list-item-label-text-color: #000000;
+  --mdc-outlined-button-label-text-color: #000000;
+  --mdc-list-list-item-hover-label-text-color: #000000;
+  --mat-option-selected-state-label-text-color: #000000;
+  --mat-option-selected-state-layer-color: #f7900a;
+  --mat-full-pseudo-checkbox-selected-icon-color: #f7900a;
+  --mdc-text-button-label-text-color: #f7900a;
+  --mdc-protected-button-container-color: #f7900a;
+  --mat-select-focused-arrow-color: #f7900a;
+  --mdc-tab-indicator-active-indicator-color: #f7900a;
+  --mat-tab-header-active-focus-indicator-color: #f7900a;
+  --mat-tab-header-active-hover-indicator-color: #f7900a;
+  --mdc-outlined-text-field-error-focus-label-text-color: #f87373;
+  --mdc-outlined-text-field-error-label-text-color: #ff1b00;
+  --mdc-outlined-text-field-error-hover-label-text-color: #ff1b00;
+  --mdc-outlined-text-field-error-outline-color: #ff1b00;
+  --mat-form-field-error-text-color: #ff1b00;
+}
+
+/* ===== FORCE MATERIAL INPUT TEXT COLOR ===== */
+
+.mat-mdc-form-field .mat-mdc-input-element {
+  color: #000000 !important;
+  caret-color: #000000 !important;
+}
+
+.mat-mdc-text-field-wrapper {
+   will-change: opacity, transform, color !important;
+}
+
+.mat-pseudo-checkbox-full {
+    border-color: #6b6b6b !important;
+}
+
+.mat-mdc-raised-button[disabled]{
+  color: #000000
+}
+
+.mat-drawer-container{
+  background-color: transparent !important;
+}
+
+.mat-drawer {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+/* ===== MATERIAL FORM GLOBAL ===== */
+
+.mat-mdc-form-field {
+
+  .mdc-floating-label {
+    color: #555;
+  }
+
+  &.mat-focused .mdc-floating-label {
+    color: #1a1a1a;
+  }
+
+  .mdc-notched-outline__leading,
+  .mdc-notched-outline__notch,
+  .mdc-notched-outline__trailing {
+    border-color: #1a1a1a;
+  }
+
+  &.mat-focused .mdc-notched-outline__leading,
+  &.mat-focused .mdc-notched-outline__notch,
+  &.mat-focused .mdc-notched-outline__trailing {
+    border-color: #1a1a1a;
+  }
+}
+
+.mat-mdc-input-element {
+  color: #1a1a1a;
+  caret-color: #1a1a1a;
+}
+
+.mat-mdc-input-element::placeholder {
+  color: #777;
+}
+
+.mat-mdc-select-value {
+  color: #1a1a1a;
+}
+
+.mat-mdc-form-field-hint-wrapper, .mat-mdc-form-field-error-wrapper {
+  padding: 0 !important;
+}
+
+
+/* ===== MATERIAL TABLE GLOBAL (FINAL) ===== */
+
+.mat-mdc-table {
+
+  /* HEADER ROW */
+  .mat-mdc-header-row {
+    background-color: #1976d2;
+  }
+
+  /* HEADER CELL (INI YANG PALING PENTING) */
+  .mat-mdc-header-cell {
+    background-color: #1976d2;
+    color: #ffffff;
+    font-weight: 600;
+    border-bottom: none;
+  }
+
+  /* DATA ROW */
+  .mat-mdc-row {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    transition: background 0.2s ease;
+  }
+
+  /* DATA CELL */
+  .mat-mdc-cell {
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  /* ZEBRA STRIPING */
+  .mat-mdc-row:nth-child(even) .mat-mdc-cell {
+    background-color: #f3cf2e;
+  }
+
+  /* HOVER */
+  .mat-mdc-row:hover .mat-mdc-cell {
+    background-color: #e7fde3;
+  }
+
+  /* ACTIVE ROW */
+  .mat-mdc-row.active .mat-mdc-cell {
+    background-color: #bbdefb !important;
+  }
+
+  .mat-mdc-table {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .mat-mdc-header-cell {
+    letter-spacing: 0.5px;
+  }
+}
+
+// GLOBAL SNACKBAR
+.success-snackbar, .error-snackbar, .info-snackbar {
+  cursor: pointer; 
+  &:hover {
+    opacity: 0.9; 
+  }
+}
+
+.cdk-global-overlay-wrapper {
+  .mat-mdc-snack-bar-container {
+    margin-top: 69px !important;
+  }
+  .with-token.mat-mdc-snack-bar-container {
+    margin-top: 69px !important;
+    margin-right: -130px !important; /* Geser ke kanan sesuai request Anda */
+  }
+}
+
+.success-snackbar {
+  --mdc-snackbar-container-color: #15cc04 !important;
+  --mdc-snackbar-supporting-text-color: white !important;
+}
+
+.error-snackbar {
+  --mdc-snackbar-container-color: #f44336 !important;
+  --mdc-snackbar-supporting-text-color: white !important;
+}
+
+.mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  border-radius: 8px !important;
+}

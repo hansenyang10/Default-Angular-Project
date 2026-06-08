@@ -1,0 +1,38 @@
+<mat-form-field appearance="outline" subscriptSizing="dynamic" style="width: 100%;">
+  <mat-label>{{ label() }}</mat-label>
+  
+  <mat-select 
+    #select 
+    [formControlName]="controlName()" 
+    [multiple]="multiple()" 
+    [placeholder]="placeholder()">
+    @if (isLoading()) {
+      <mat-option disabled>
+        <div class="spinner-container">
+          <mat-spinner diameter="20"></mat-spinner>
+          <span>Loading data...</span>
+        </div>
+      </mat-option>
+    } @else {
+      @for (item of data(); track item) {
+        <mat-option [value]="item[valueField()]" [disabled]="disabled()">
+          {{ item[labelField()] }}
+        </mat-option>
+      }
+    }
+  </mat-select>
+
+  <div matSuffix class="suffix-wrapper">
+    @if (isLoading()) {
+      <mat-spinner diameter="18" class="margin-right-8"></mat-spinner>
+    } @else {
+      <mat-icon class="caret-icon">
+        {{ select.panelOpen ? 'expand_less' : 'expand_more' }}
+      </mat-icon>
+    }
+  </div>
+
+  <mat-error>
+    {{ errorMessage }}
+  </mat-error>
+</mat-form-field>

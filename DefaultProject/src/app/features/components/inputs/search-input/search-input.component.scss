@@ -1,0 +1,13 @@
+
+.search-field {
+  width: 100%;
+  --mdc-outlined-text-field-container-shape: 25px;
+  input::placeholder {
+    color: #969595 !important; 
+    opacity: 1;
+  }
+
+  input::-webkit-input-placeholder {
+    color: #969595 !important;
+  }
+}

@@ -1,0 +1,6 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
+<div mat-dialog-content>{{ data.message }}</div>
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="onNoClick()">Batal</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true">Ya, Simpan</button>
+</div>
